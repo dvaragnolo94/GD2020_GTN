@@ -1,0 +1,162 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://GameAlpha/MainGui.gd" type="Script" id=1]
+[ext_resource path="res://GUI/bg.jpg" type="Texture" id=2]
+[ext_resource path="res://GUI/font/Manti Sans Fixed Demo.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://GUI/font/Rightland.otf" type="DynamicFontData" id=4]
+
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://GUI/font/Rightland.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+extra_spacing_top = 32
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+extra_spacing_bottom = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+extra_spacing_top = 16
+extra_spacing_bottom = 16
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+extra_spacing_top = 8
+extra_spacing_bottom = 8
+extra_spacing_char = 4
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+extra_spacing_top = 16
+extra_spacing_space = 4
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 25
+font_data = ExtResource( 3 )
+
+[node name="GUI" type="VBoxContainer"]
+anchor_right = 1.002
+anchor_bottom = 1.0
+margin_left = 256.0
+margin_right = -256.048
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 213.824, 266.244 )
+scale = Vector2( 1.72931, 1.51527 )
+texture = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="."]
+margin_top = 174.0
+margin_right = 514.0
+margin_bottom = 281.0
+custom_fonts/font = SubResource( 2 )
+text = "Guess The Number!"
+align = 1
+valign = 1
+
+[node name="SubTitle" type="Label" parent="."]
+margin_top = 285.0
+margin_right = 514.0
+margin_bottom = 340.0
+custom_fonts/font = SubResource( 3 )
+text = "Space Edition"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+visible = false
+margin_top = 317.0
+margin_right = 514.0
+margin_bottom = 452.0
+alignment = 1
+
+[node name="Play" type="Button" parent="Menu"]
+margin_right = 514.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 4 )
+text = "Play!"
+
+[node name="Difficulty" type="VBoxContainer" parent="Menu"]
+margin_top = 30.0
+margin_right = 514.0
+margin_bottom = 135.0
+
+[node name="Label" type="Label" parent="Menu/Difficulty"]
+margin_right = 514.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 5 )
+text = "Set the difficulty "
+align = 1
+
+[node name="HSlider" type="HSlider" parent="Menu/Difficulty"]
+margin_top = 56.0
+margin_right = 514.0
+margin_bottom = 72.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="LevelDiff" type="Label" parent="Menu/Difficulty"]
+margin_top = 76.0
+margin_right = 514.0
+margin_bottom = 105.0
+custom_fonts/font = SubResource( 6 )
+text = "1"
+align = 1
+
+[node name="Game" type="VBoxContainer" parent="."]
+margin_top = 344.0
+margin_right = 514.0
+margin_bottom = 426.0
+alignment = 1
+
+[node name="Button" type="Button" parent="Game"]
+margin_right = 514.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 7 )
+text = "Try!"
+
+[node name="Label" type="Label" parent="Game"]
+margin_top = 46.0
+margin_right = 514.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 8 )
+text = "Try a number from 1 to 100"
+align = 1
+
+[node name="TextEdit" type="TextEdit" parent="Game/Label"]
+anchor_left = 0.315
+anchor_top = 1.19
+anchor_right = 0.687
+anchor_bottom = 2.694
+margin_left = 0.0899811
+margin_top = 8.16
+margin_right = -0.118011
+margin_bottom = 0.0159912
+custom_fonts/font = SubResource( 9 )
+text = " ... "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Menu/Play" to="." method="_on_Play_pressed"]
+[connection signal="value_changed" from="Menu/Difficulty/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="Game/Button" to="." method="_on_Button_pressed"]

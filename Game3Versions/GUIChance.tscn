@@ -1,0 +1,216 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Game3Versions/MainGuiChance.gd" type="Script" id=1]
+[ext_resource path="res://GUI/bg.jpg" type="Texture" id=2]
+[ext_resource path="res://GUI/font/Manti Sans Fixed Demo.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://GUI/font/Rightland.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://GUI/blaster_icon.png" type="Texture" id=5]
+
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://GUI/font/Rightland.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+extra_spacing_top = 32
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+extra_spacing_bottom = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+extra_spacing_top = 16
+extra_spacing_bottom = 16
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+extra_spacing_top = 16
+extra_spacing_space = 4
+font_data = ExtResource( 3 )
+
+[node name="GUI" type="VBoxContainer"]
+anchor_right = 1.002
+anchor_bottom = 1.0
+margin_left = 256.0
+margin_right = -256.048
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 213.824, 266.244 )
+scale = Vector2( 1.72931, 1.51527 )
+texture = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="."]
+margin_top = 138.0
+margin_right = 514.0
+margin_bottom = 245.0
+custom_fonts/font = SubResource( 2 )
+text = "Guess The Number!"
+align = 1
+valign = 1
+
+[node name="SubTitle" type="Label" parent="."]
+margin_top = 249.0
+margin_right = 514.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 3 )
+text = "Space Chance Edition"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="VBoxContainer" parent="."]
+visible = false
+margin_top = 359.0
+margin_right = 514.0
+margin_bottom = 411.0
+
+[node name="Label" type="Label" parent="Tutorial"]
+margin_right = 514.0
+margin_bottom = 48.0
+text = "Hi and welcome to the tutorial! THe game is very easy: you have to find the corret number (choosly randomly) by clicking on it in the grid, like one below. Follow the clue that will help you. Try it!"
+autowrap = true
+
+[node name="TutorialGrid" type="VBoxContainer" parent="Tutorial"]
+margin_top = 52.0
+margin_right = 514.0
+margin_bottom = 52.0
+
+[node name="Back" type="Button" parent="Tutorial"]
+visible = false
+margin_top = 56.0
+margin_right = 514.0
+margin_bottom = 76.0
+text = "Good! Back to Menu"
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_top = 308.0
+margin_right = 514.0
+margin_bottom = 461.0
+alignment = 1
+
+[node name="Start" type="Button" parent="Menu"]
+show_behind_parent = true
+margin_right = 514.0
+margin_bottom = 20.0
+text = "Start"
+
+[node name="Tutorial" type="Button" parent="Menu"]
+margin_top = 24.0
+margin_right = 514.0
+margin_bottom = 44.0
+text = "Tutorial"
+
+[node name="Difficulty" type="VBoxContainer" parent="Menu"]
+margin_top = 48.0
+margin_right = 514.0
+margin_bottom = 153.0
+
+[node name="Label" type="Label" parent="Menu/Difficulty"]
+margin_right = 514.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 4 )
+text = "Set the difficulty "
+align = 1
+
+[node name="HSlider" type="HSlider" parent="Menu/Difficulty"]
+margin_top = 56.0
+margin_right = 514.0
+margin_bottom = 72.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="LevelDiff" type="Label" parent="Menu/Difficulty"]
+margin_top = 76.0
+margin_right = 514.0
+margin_bottom = 105.0
+custom_fonts/font = SubResource( 5 )
+text = "1"
+align = 1
+
+[node name="Lore" type="VBoxContainer" parent="."]
+visible = false
+margin_top = 329.0
+margin_right = 525.0
+margin_bottom = 441.0
+
+[node name="LoreLabel" type="Label" parent="Lore"]
+margin_right = 525.0
+margin_bottom = 82.0
+text = "Good Morning Sir!
+ Let me introduce myself: i'm Hon Salo, the second commander of this spaceship.
+ I'm here to explain the plan: we have to go to the planet Caruscont, and rescue
+ our spy CC-9 from the enemies. Right now we have to prepare the spaceship
+ and set the correct amount of fuel"
+align = 1
+clip_text = true
+
+[node name="Play" type="Button" parent="Lore"]
+margin_top = 86.0
+margin_right = 525.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 6 )
+text = "Play!"
+
+[node name="Game" type="VBoxContainer" parent="."]
+visible = false
+margin_top = 365.0
+margin_right = 514.0
+margin_bottom = 405.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Game"]
+margin_right = 514.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 7 )
+text = "Try a number from 1 to 100"
+align = 1
+autowrap = true
+
+[node name="Grid" type="VBoxContainer" parent="Game"]
+margin_top = 40.0
+margin_right = 514.0
+margin_bottom = 40.0
+
+[node name="Continue" type="Button" parent="Game"]
+visible = false
+margin_top = 44.0
+margin_right = 514.0
+margin_bottom = 64.0
+text = "Continue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game"]
+margin_top = 44.0
+margin_right = 514.0
+margin_bottom = 244.0
+alignment = 1
+
+[node name="BlasterItem" type="TextureButton" parent="Game/HBoxContainer"]
+visible = false
+margin_left = 157.0
+margin_right = 357.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+[connection signal="pressed" from="Tutorial/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Menu/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Menu/Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="value_changed" from="Menu/Difficulty/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="Lore/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Game/Continue" to="." method="_on_Start_pressed"]
+[connection signal="button_down" from="Game/HBoxContainer/BlasterItem" to="." method="_on_BlasterItem_button_down"]
